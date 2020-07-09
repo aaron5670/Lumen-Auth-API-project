@@ -1,4 +1,4 @@
-# lumen-auth-example
+# lumen-auth-example with JWT
 
 Work In Progress...
 
@@ -9,3 +9,15 @@ Work In Progress...
 -   `php artisan jwt:secret`
 -   `php artisan migrate`
 -   `php -S localhost:8000 -t public`
+
+
+### Register POST data
+-- name
+-- email
+-- username
+-- password
+-- password_confirmation
+
+### Login POST data
+-- email
+-- password
