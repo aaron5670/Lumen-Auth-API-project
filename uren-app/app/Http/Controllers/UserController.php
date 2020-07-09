@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use  App\User;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
     /**
      * Instantiate a new UserController instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -22,8 +20,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function profile()
-    {
+    public function profile() {
         return response()->json(['user' => Auth::user()], 200);
     }
 
@@ -32,9 +29,8 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function allUsers()
-    {
-        return response()->json(['users' =>  User::all()], 200);
+    public function allUsers() {
+        return response()->json(['users' => User::all()], 200);
     }
 
     /**
@@ -42,8 +38,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function singleUser($id)
-    {
+    public function singleUser($id) {
         try {
             $user = User::findOrFail($id);
 

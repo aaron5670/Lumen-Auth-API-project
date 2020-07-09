@@ -6,20 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use  App\User;
 
-class AuthController extends Controller
-{
+class AuthController extends Controller {
     /**
      * Store a new user.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return Response
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
         //validate incoming request
         $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'name'     => 'required|string',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ]);
 
@@ -47,20 +45,19 @@ class AuthController extends Controller
     /**
      * Get a JWT via given credentials.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return Response
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         //validate incoming request
         $this->validate($request, [
-            'email' => 'required|string',
+            'email'    => 'required|string',
             'password' => 'required|string',
         ]);
 
         $credentials = $request->only(['email', 'password']);
 
-        if (! $token = Auth::attempt($credentials)) {
+        if (!$token = Auth::attempt($credentials)) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
